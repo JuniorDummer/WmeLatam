@@ -2847,7 +2847,7 @@ function funVia_AplicarMudancaCidade() {
             genericAssincCommand(comando);
 
             if (semCidade) {
-                comando = "$('input[name=\"emptyCity\"]').click();";
+                comando = "$('id[name=\"empty-city\"]').click();";
             }
             else {
                 comando = "$('[name=stateID]').val(\"" + seg_IdEstadoCidadeEscolhida_MudancaCidade + "\");          \
@@ -4609,7 +4609,7 @@ function funRevVia_VerificarSegmentoVisivel(segmento) {
 }
 
 function funRevVia_SelecionarSegmento(segmento, segmentoSelecionado) {
-    if (!segmentoSelecionado) {
+	    if (!segmentoSelecionado) {
         var instrucao = "                                                           \
         var segmento = wazeModel.segments.objects["+ segmento.attributes.id + "];  \
         var t = [];                                                                 \
@@ -4617,7 +4617,6 @@ function funRevVia_SelecionarSegmento(segmento, segmentoSelecionado) {
         Waze.selectionManager.setSelectedModels(t);";
         genericAssincCommand(instrucao, false);
     }
-
     return true;
 }
 
@@ -4640,11 +4639,14 @@ function funRevVia_CorrigirSegmentoSangrento(segmento) {
         instrucao = "$('input[name=\"cityName\"]').attr(\"value\",\"" + seg_NomeCidadeEscolhida + "\");";
     }
     else {
-        instrucao = "$('input[name=\"emptyCity\"]').click();";
+        instrucao = "$('id[name=\"empty-city\"]').click();";
+
     }
     genericAssincCommand(instrucao, false);
 
-    instrucao = "$('input[name=\"emptyStreet\"]').click();";
+
+
+    instrucao = "$('input[id=\"empty-street\"]').click();";
     genericAssincCommand(instrucao, false);
 
 }
